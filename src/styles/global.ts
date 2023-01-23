@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { baseTheme } from './theme';
 
 export default createGlobalStyle`
 *  {
@@ -8,8 +9,7 @@ export default createGlobalStyle`
 body {
     padding: 0;
     margin: 0;
-    background-color: hsl(210deg 8% 85%);
-    width: 100vh;
-    height: 100vh;
+    color: ${baseTheme.colors.font}
+    font-family: Calibri;
 }
 `
