@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../hooks';
 import styled from 'styled-components';
 import { fetchAllQuestions } from '../redux/features/queries';
 import { Flex, Loader, PageTitle, Title1 } from '../styles/components';
-import QuestionCard from '../components/Question';
+import QuestionCard from '../components/QuestionCard';
 import { baseTheme } from '../styles/theme';
 
 const QuestionsPage = (): JSX.Element => {
@@ -31,7 +31,7 @@ const QuestionsPage = (): JSX.Element => {
                 <Flex direction='column'>
                     {questions?.map(question => {
                         return (
-                            <QuestionCard {...question} />
+                            <QuestionCard {...question} key={question.question_id} />
                         )
                     })}
                 </Flex>

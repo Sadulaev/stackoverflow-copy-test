@@ -20,7 +20,7 @@ export interface Question {
     is_answered: boolean;
 }
 
-// export interface Answers {
+// export interface Comment {
 //     owner: Owner;
 //     answer_id: string;
 // }

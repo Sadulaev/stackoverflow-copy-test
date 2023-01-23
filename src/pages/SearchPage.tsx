@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import QuestionCard from '../components/Question';
+import QuestionCard from '../components/QuestionCard';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { fetchQuestionsByParams } from '../redux/features/queries';
 import { Flex, Loader, PageTitle } from '../styles/components';
@@ -32,7 +32,7 @@ const SearchPage = (): JSX.Element => {
                 <Flex direction='column'>
                     {questions?.map(question => {
                         return (
-                            <QuestionCard {...question} />
+                            <QuestionCard {...question} key={question.question_id} />
                         )
                     })}
                 </Flex>
