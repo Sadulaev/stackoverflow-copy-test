@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { fetchAllTags } from '../redux/features/queries';
-import { Flex } from '../styles/components';
+import { Flex, Loader } from '../styles/components';
 import { baseTheme } from '../styles/theme';
 
 const TagsPage = (): JSX.Element => {
     const dispatch = useAppDispatch()
     const tags = useAppSelector(state => state.appData.allTags)
+    const status = useAppSelector(state => state.appData.status)
 
     useEffect(() => {
         dispatch(fetchAllTags())
@@ -16,11 +17,22 @@ const TagsPage = (): JSX.Element => {
 
     return (
         <Tags>
-            <Flex wrap='wrap'>
+            {status === 'pending' ?
+                <Flex justifyContent='center' alignItems='center'>
+                    <Loader />
+                </Flex>
+                :
+                ''
+            }
+            {status === 'fulfilled' ?
+                <Flex wrap='wrap'>
                 {tags.map(tag => {
                     return <Tag key={tag.name}><p>{tag.name}</p>  {tag.count}</Tag>
                 })}
             </Flex>
+                :
+                ''
+            }
         </Tags>
     );
 };

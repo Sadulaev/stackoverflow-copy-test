@@ -98,13 +98,15 @@ const SearchBar = styled.div`
         width: 100%;
         padding: 8px 9px;
         border: none;
-    }
+    };
     input:focus-visible {
         outline: none
-    }
+    };
     button {
         padding 5px;
-        
+    };
+    a {
+        text-decoration: none;
     }
 `
 

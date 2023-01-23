@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import styled from 'styled-components';
 import { fetchAllQuestions } from '../redux/features/queries';
-import { Flex, PageTitle, Title1 } from '../styles/components';
+import { Flex, Loader, PageTitle, Title1 } from '../styles/components';
 import QuestionCard from '../components/Question';
 import { baseTheme } from '../styles/theme';
 
@@ -13,27 +13,41 @@ const QuestionsPage = (): JSX.Element => {
 
     useEffect(() => {
         dispatch(fetchAllQuestions())
-    }, [])
+    }, [dispatch])
 
     return (
         <StyledQuestionsPage>
             <TitleBlock>
                 <PageTitle>All Questions</PageTitle>
             </TitleBlock>
-            <Flex direction='column'>
-                {questions?.map(question => {
-                    return (
-                        <QuestionCard {...question} />
-                    )
-                })}
-            </Flex>
+            {status === 'pending' ?
+                <Flex justifyContent='center' alignItems='center'>
+                    <Loader />
+                </Flex>
+                :
+                ''
+            }
+            {status === 'fulfilled' ?
+                <Flex direction='column'>
+                    {questions?.map(question => {
+                        return (
+                            <QuestionCard {...question} />
+                        )
+                    })}
+                </Flex>
+                :
+                ''
+            }
+
         </StyledQuestionsPage>
 
     );
 };
 
 const StyledQuestionsPage = styled.div`
-    padding: 24px 16px; 
+    padding: 24px 16px;
+    width: 100%;
+    height: 100vh;
 `
 
 const TitleBlock = styled.div`

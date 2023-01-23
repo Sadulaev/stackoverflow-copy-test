@@ -18,11 +18,13 @@ const MainPage = (): JSX.Element => {
                 <Container>
                     <Flex alignItems='flex-start'>
                         <LeftNav />
-                        <Routes>
-                            <Route path='/' index element={<QuestionsPage />} />
-                            <Route path='/tags' element={<TagsPage />} />
-                            <Route path='/questions/search' element={<SearchPage />} />
-                        </Routes>
+                        <Content>
+                            <Routes>
+                                <Route path='/' index element={<QuestionsPage />} />
+                                <Route path='/tags' element={<TagsPage />} />
+                                <Route path='/questions/search' element={<SearchPage />} />
+                            </Routes>
+                        </Content>
                     </Flex>
                 </Container>
             </BrowserRouter>
@@ -30,11 +32,12 @@ const MainPage = (): JSX.Element => {
     );
 };
 
-
-
 const Container = styled.div`
-max-width: ${baseTheme.media.max};
-margin: 0 auto;
+    max-width: ${baseTheme.media.max};
+    margin: 0 auto;
+`
+const Content = styled.div`
+    width: 100%;
 `
 
 export default MainPage;
