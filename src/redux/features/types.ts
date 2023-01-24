@@ -17,18 +17,21 @@ export interface Question {
     owner: Owner;
     question_id: string;
     title: string;
+    body: string;
     is_answered: boolean;
 }
 
-// export interface Comment {
-//     owner: Owner;
-//     answer_id: string;
-// }
+export interface Comment {
+    owner: Owner;
+    comment_id: string;
+    body: string;
+}
 
 export interface AppData {
     questions?: Question[];
+    currentQuestion: Question | null;
+    comments: Comment[];
     status?: string | null;
     error?: string | null;
     allTags: Tags[];
-    // questionAnswers: 
 }
